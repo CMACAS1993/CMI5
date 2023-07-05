@@ -1,0 +1,14 @@
+{{ form_start(form) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.roles) }}
+    {{ form_row(form.password) }}
+    {{ form_row(form.name) }}
+    <div class="row" style="margin-top:10px">
+        <div class="col-6">
+            <a class="btn btn-danger" href="{{ path('app_user_index') }}">Cancelar</a>
+        </div>
+        <div class="col-6">
+            <button class="btn btn-success ">{{ button_label|default('Aceptar') }}</button>
+        </div>
+    </div>
+{{ form_end(form) }}

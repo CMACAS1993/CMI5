@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block title %}Curso{% endblock %}
+{% block body %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+    <h1>Curso</h1>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nombre:</th>
+                <td>{{ course.name }}</td>
+            </tr>
+            <tr>
+                <th>Fecha de Inicio:</th>
+                <td>{{ course.initialDate ? course.initialDate|date('Y-m-d ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Fecha Fin:</th>
+                <td>{{ course.finalDate ? course.finalDate|date('Y-m-d ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Miembros:</th>
+                    {% for m in course.members %}
+                    <td><span class="btn btn-success">{{ m.name }}</span></td>
+                    {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_course_index') }}"><i class="fa fa-tasks"></i></a>
+    {% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path('app_course_edit', {'id': course.id}) }}"><i class="fa fa-edit"></i></a>
+
+
+    {{ include('course/_delete_form.html.twig') }}
+    {% endif %}
+    </div>
+    </section>
+        </div>
+{% endblock %}

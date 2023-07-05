@@ -1,0 +1,25 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Actividad{% endblock %}
+
+{% block body %}
+
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+    <h1>Editar Actividad</h1>
+<div class=" btn btn-group-horizontal">
+    {{ include('n_activity/_form.html.twig', {'button_label': 'Actualizar'}) }}
+    {{ include('n_activity/_delete_form.html.twig') }}
+
+</div>
+        </div>
+    </div>
+</div>
+</section>
+    </div>
+{% endblock %}

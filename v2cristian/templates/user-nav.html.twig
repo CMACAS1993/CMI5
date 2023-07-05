@@ -1,0 +1,83 @@
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="{{ path('app_begin') }}" class="nav-link">Inicio</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="{{path('app_about')}}" class="nav-link">Acerca de</a>
+        </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
+
+        {% if app.user %}
+            <li class="nav-item dropdown user-menu">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ asset('dist/img/avatar5.png') }}" class="user-image img-circle elevation-2"
+                         alt="User Image">
+                    <span class="d-none d-md-inline">{{ app.user.name }}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <!-- User image -->
+                    <li class="user-header bg-primary">
+                        <img src="{{ asset('dist/img/avatar5.png') }}" class="img-circle elevation-2" alt="User Image">
+
+                        <p>
+                            {% if app.user.roles[0]=='ROLE_ADMIN' %}
+                                <button class="btn btn-success">PROFESOR</button>
+
+                                {% else %}
+                                    <button class="btn btn-success">ESTUDIANTE</button>
+
+                            {% endif %}
+
+                            <small>  {{ app.user.name }}</small>
+                        </p>
+                    </li>
+                    <!-- Menu Body -->
+                    <li class="user-body">
+                        <div class="row">
+                            <div class="col-4 text-center">
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <a href="{{ path('app_user_index') }}">Usuarios</a>
+                                {% endif %}
+                            </div>
+                            <div class="col-4 text-center">
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('app_show_uml') }}">HOJA UML</a>
+                            {% endif %}
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </li>
+                    <!-- Menu Footer-->
+                    <li class="user-footer">
+
+
+                        <a href="{{ path('app_user_show', {'id': app.user.id}) }}" class="btn btn-default btn-flat">Perfil</a>
+                        <a href="{{ path('app_logout') }}" class="btn btn-default btn-flat float-right">Salir</a>
+                    </li>
+                </ul>
+            </li>
+
+        {% else %}
+
+            <li class="nav-item dropdown">
+                <a href="{{ path('app_login') }}" data-toggle="" aria-haspopup="true"
+                   aria-expanded="false"
+                   class="nav-link">Login</a>
+            </li>
+
+
+        {% endif %}
+
+
+    </ul>
+</nav>
+<!-- /.navbar -->

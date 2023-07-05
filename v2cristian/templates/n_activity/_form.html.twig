@@ -1,0 +1,28 @@
+{{ form_start(form) }}
+<div class="container-fluid">
+	<div class="row">
+		<div class=" col-sm-12">
+			{{form_row(form.title)  }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			{{form_row(form.description )  }}
+		</div>
+		<div class="col-sm-12">
+			{{form_row(form.place )  }}
+		</div>
+	</div>
+	<div class="row">
+		{{form_row(form.nta)  }}
+	</div>
+</div>
+<div class="row"  style="margin-top:10px">
+	<div class="col-6">
+		<button class="btn btn-success">{{ button_label|default('Aceptar') }}</button>
+	</div>
+	<div class="col-6">
+		<a class="btn btn-danger " href="{{ path('app_n_activity_index') }}">Cancelar</a>
+	</div>
+</div>
+{{ form_end(form) }}

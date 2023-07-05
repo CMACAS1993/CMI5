@@ -1,0 +1,24 @@
+
+{{ form_start(form) }}
+{# {{ form_widget(form) }} #}
+<div class="col-14">
+	{{ form_row(form.name) }}
+</div>
+<div class="col-14">
+	{{ form_row(form.members) }}
+</div>
+<div class="col-14">
+	{{ form_row(form.initialDate) }}
+</div>
+<div class="col-14">
+	{{ form_row(form.finalDate) }}
+</div>
+<div class="row"  style="margin-top:10px">
+	<div class="col-6">
+		<button class="btn btn-success">{{ button_label|default('Aceptar') }}</button>
+	</div>
+	<div class="col-6">
+		<a class="btn btn-danger " href="{{ path('app_course_index') }}">Cancelar</a>
+	</div>
+</div>
+{{ form_end(form) }}

@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Actividades
+{% endblock %}
+
+{% block body %}
+
+	<div
+		class="content-wrapper">
+		<!-- Content Header (Page header) -->
+		<section class="content-header">
+			<div class="container-fluid">
+				<h1>Lista de Actividades</h1>
+				{% for message in app.flashes('success') %}
+					<div class="alert alert-success" role="alert">
+						<i class="icon fa fa-check"></i>
+						{{ message }}
+					</div>
+				{% endfor %}
+
+				{% for message in app.flashes('error') %}
+					<div class="alert alert-danger" role="alert">
+						<i class="icon fa fa-ban"></i>
+						{{ message }}
+					</div>
+				{% endfor %}
+				<div class="card-body table-responsive p-0" style="height: auto;">
+					<table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+						<thead>
+							<tr>
+								<th>Título</th>
+								<th>Descripción</th>
+								<th>Tipo</th>
+								<th>Lugar</th>
+								<th>Acciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for n_activity in n_activities %}
+								<tr>
+									<td>{{ n_activity.title }}</td>
+									<td>{{ n_activity.description }}</td>
+									<td>
+										<span class="badge badge-pill badge-success">
+											<strong>
+												<i>{{ n_activity.nta }}</i>
+											</strong>
+										</span>
+									</td>
+									<td>
+										<strong>
+											<i>{{ n_activity.place }}</i>
+										</strong>
+									</td>
+									<td>
+										<a href="{{ path('app_n_activity_show', {'id': n_activity.id}) }}">
+											<i class="fa fa-eye"></i>
+										</a>
+
+										<!--a href="{{ path('app_n_activity_pdf', {'id': n_activity.id}) }}">
+											<i class="fa fa-file-pdf"></i>
+										</a-->
+										{% if is_granted('ROLE_ADMIN') %}
+											<a href="{{ path('app_n_activity_edit', {'id': n_activity.id}) }}">
+												<i class="fa fa-edit"></i>
+											</a>
+											<a href="{{ path('app_xapi_activity', {'id': n_activity.id}) }}">
+												<i class="fa fa-briefcase"></i>
+											</a>
+
+										{% endif %}
+									</td>
+								</tr>
+							{% else %}
+								<tr>
+									<td colspan="3">no hay datos</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+
+				</div>
+				{% if is_granted('ROLE_ADMIN')%}
+					<a class="btn  btn-primary" href="{{ path('app_n_activity_new') }}">
+						Agregar actividad <i class=" fa fa-plus"></i>
+					</a>
+				{% endif %}
+
+
+			</div>
+		</section>
+	</div>
+{% endblock %}

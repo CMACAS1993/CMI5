@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tincan xmlns="http://projecttincan.com/tincan.xsd">
+  <activities>
+    <activity id="http://id.tincanapi.com/activity/tincan-prototypes/9" type="http://adlnet.gov/expapi/activities/course">
+      <name>Tarea #9 Clases relacionadas</name>
+      <description lang="en-US">Crea tres clases llamadas Parte1, Parte2 y Parte3 respectivamente, y ponles a cada una un atributo numerico llamado Codigo y un método llamado Funcionar que toma un parámetro entero y devuelve booleano. Luego crea una clase llamada Maquina, que se relacione por composición con las tres partes declaradas antes y ponle un método llamado Funcionar.</description>
+      <launch lang="en-US">index.html</launch>
+    </activity>
+  </activities>
+</tincan>
